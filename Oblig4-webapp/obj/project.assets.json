@@ -995,11 +995,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fredn\\source\\repos\\Oblig4-webapp\\Oblig4-webapp.csproj",
+      "projectUniqueName": "C:\\Users\\fredn\\source\\repos\\DAT-154-Oblig4\\Oblig4-webapp\\Oblig4-webapp.csproj",
       "projectName": "Oblig4-webapp",
-      "projectPath": "C:\\Users\\fredn\\source\\repos\\Oblig4-webapp\\Oblig4-webapp.csproj",
+      "projectPath": "C:\\Users\\fredn\\source\\repos\\DAT-154-Oblig4\\Oblig4-webapp\\Oblig4-webapp.csproj",
       "packagesPath": "C:\\Users\\fredn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fredn\\source\\repos\\Oblig4-webapp\\obj\\",
+      "outputPath": "C:\\Users\\fredn\\source\\repos\\DAT-154-Oblig4\\Oblig4-webapp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

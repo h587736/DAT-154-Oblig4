@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
+using Oblig4_webapp.MyDbContext;
 
 
 namespace Oblig4_webapp
@@ -20,7 +21,7 @@ namespace Oblig4_webapp
         {
             services.AddControllers();
 
-            services.AddDbContext<MyDbContext>(options =>
+            services.AddDbContext<HotelDbContext>(options =>
                 options.UseNpgsql(_configuration.GetConnectionString("DefaultConnection")));
         }
 

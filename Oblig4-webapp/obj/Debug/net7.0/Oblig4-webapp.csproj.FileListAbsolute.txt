@@ -29,3 +29,11 @@ C:\Users\fredn\source\repos\Oblig4-webapp\obj\Debug\net7.0\refint\Oblig4-webapp.
 C:\Users\fredn\source\repos\Oblig4-webapp\obj\Debug\net7.0\Oblig4-webapp.pdb
 C:\Users\fredn\source\repos\Oblig4-webapp\obj\Debug\net7.0\Oblig4-webapp.genruntimeconfig.cache
 C:\Users\fredn\source\repos\Oblig4-webapp\obj\Debug\net7.0\ref\Oblig4-webapp.dll
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Oblig4-webapp\obj\Debug\net7.0\Oblig4-webapp.csproj.AssemblyReference.cache
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Oblig4-webapp\obj\Debug\net7.0\Oblig4-webapp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Oblig4-webapp\obj\Debug\net7.0\Oblig4-webapp.AssemblyInfoInputs.cache
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Oblig4-webapp\obj\Debug\net7.0\Oblig4-webapp.AssemblyInfo.cs
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Oblig4-webapp\obj\Debug\net7.0\Oblig4-webapp.csproj.CoreCompileInputs.cache
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Oblig4-webapp\obj\Debug\net7.0\Oblig4-webapp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Oblig4-webapp\obj\Debug\net7.0\Oblig4-webapp.RazorAssemblyInfo.cache
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Oblig4-webapp\obj\Debug\net7.0\Oblig4-webapp.RazorAssemblyInfo.cs

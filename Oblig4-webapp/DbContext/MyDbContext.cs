@@ -1,13 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Oblig4_webapp.Models;
 
 namespace Oblig4_webapp.MyDbContext
 {
-    public class MyDbContext : DbContext
+    public class HotelDbContext : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Rooms> Rooms { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
 
-        public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
+        public HotelDbContext(DbContextOptions<HotelDbContext> options) : base(options)
         {
         }
 
@@ -15,6 +18,5 @@ namespace Oblig4_webapp.MyDbContext
         {
             // Configure the model here
         }
-
     }
 }
