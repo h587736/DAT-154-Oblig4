@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Library;
+using Library.Models;
 using Oblig4_webapp.MyDbContext;
 using Microsoft.Extensions.DependencyInjection;
 

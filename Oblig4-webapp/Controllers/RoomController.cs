@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Library;
+using Library.Models;
 using Oblig4_webapp.MyDbContext;
 
 namespace Oblig4_webapp.Controllers

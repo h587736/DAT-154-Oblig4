@@ -2,7 +2,7 @@
 using System.Net;
 using System.Xml.Linq;
 
-namespace Library
+namespace Library.Models
 {
     public partial class RegisterRequest
     {

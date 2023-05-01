@@ -2,8 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Oblig4_webapp.MyDbContext;
+using Microsoft.Extensions.Configuration;
+using Library;
 
 
 namespace Oblig4_webapp
@@ -19,11 +20,14 @@ namespace Oblig4_webapp
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            // Use the connection string from the appsettings.json file
+            var connectionString = _configuration.GetConnectionString("MyConnectionString");
 
+            // Register the DbContext with the connection string
             services.AddDbContext<HotelDbContext>(options =>
-                options.UseNpgsql(_configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<Oblig4_webapp.MyDbContext.HotelDbContext>();
+                options.UseNpgsql(connectionString));
+
+            services.AddControllersWithViews();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

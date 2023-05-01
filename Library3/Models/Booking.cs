@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Library
+namespace Library.Models
 {
     public partial class Booking
     {

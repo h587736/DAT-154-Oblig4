@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Library;
+using Library.Models;
 using Oblig4_webapp.MyDbContext;
 using System.Linq;
 
