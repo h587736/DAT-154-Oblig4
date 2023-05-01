@@ -108,12 +108,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\Booking.cs" />
-    <Content Include="Models\Customer.cs" />
-    <Content Include="Models\LoginRequest.cs" />
-    <Content Include="Models\RegisterRequest.cs" />
-    <Content Include="Models\Rooms.cs" />
+    <Content Include="Booking.cs" />
+    <Content Include="Customer.cs" />
+    <Content Include="LoginRequest.cs" />
+    <Content Include="RegisterRequest.cs" />
+    <Content Include="Rooms.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

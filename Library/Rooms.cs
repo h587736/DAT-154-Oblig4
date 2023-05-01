@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
-namespace Library.Models
+namespace Library
 {
-    public class Rooms
+    public partial class Rooms
     {
         [Key]
         public int Id { get; set; }

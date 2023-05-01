@@ -2,9 +2,9 @@
 using System.Net;
 using System.Xml.Linq;
 
-namespace Library.Models
+namespace Library
 {
-    public class RegisterRequest
+    public partial class RegisterRequest
     {
         [Required]
         public string Email { get; set; }

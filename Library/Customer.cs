@@ -1,6 +1,6 @@
-﻿namespace Library.Models
+﻿namespace Library
 {
-    public class Customer
+    public partial class Customer
     {
         public int Id { get; set; }
         public string Email { get; set; }

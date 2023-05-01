@@ -1,7 +1,7 @@
 ﻿using System;
-namespace Library.Models
+namespace Library
 {
-    public class Booking
+    public partial class Booking
     {
         public int Id { get; set; }
         public int CustomerId { get; set; }
