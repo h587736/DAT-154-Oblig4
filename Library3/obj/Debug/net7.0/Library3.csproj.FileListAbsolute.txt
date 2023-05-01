@@ -1,0 +1,12 @@
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Library3\bin\Debug\net7.0\Library3.deps.json
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Library3\bin\Debug\net7.0\Library3.dll
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Library3\bin\Debug\net7.0\Library3.pdb
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Library3\obj\Debug\net7.0\Library3.csproj.AssemblyReference.cache
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Library3\obj\Debug\net7.0\Library3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Library3\obj\Debug\net7.0\Library3.AssemblyInfoInputs.cache
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Library3\obj\Debug\net7.0\Library3.AssemblyInfo.cs
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Library3\obj\Debug\net7.0\Library3.csproj.CoreCompileInputs.cache
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Library3\obj\Debug\net7.0\Library3.dll
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Library3\obj\Debug\net7.0\refint\Library3.dll
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Library3\obj\Debug\net7.0\Library3.pdb
+C:\Users\fredn\source\repos\DAT-154-Oblig4\Library3\obj\Debug\net7.0\ref\Library3.dll

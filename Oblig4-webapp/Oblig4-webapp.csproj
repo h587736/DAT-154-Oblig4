@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Library\Library.vbproj" />
+    <ProjectReference Include="..\Library3\Library3.csproj" />
   </ItemGroup>
 
 </Project>
