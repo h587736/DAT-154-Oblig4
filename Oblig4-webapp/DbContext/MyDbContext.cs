@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Oblig4_webapp.Models;
+using Library.Models;
 
 namespace Oblig4_webapp.MyDbContext
 {

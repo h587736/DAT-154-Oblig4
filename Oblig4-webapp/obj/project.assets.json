@@ -387,6 +387,16 @@
         "build": {
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
+      },
+      "Library/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Library.dll": {}
+        }
       }
     }
   },
@@ -980,10 +990,16 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Library/1.0.0": {
+      "type": "project",
+      "path": "../ClassLibrary1/Library.vbproj",
+      "msbuildProject": "../ClassLibrary1/Library.vbproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "Library >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.5",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.4"
     ]
@@ -1020,7 +1036,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\fredn\\source\\repos\\DAT-154-Oblig4\\ClassLibrary1\\Library.vbproj": {
+              "projectPath": "C:\\Users\\fredn\\source\\repos\\DAT-154-Oblig4\\ClassLibrary1\\Library.vbproj"
+            }
+          }
         }
       },
       "warningProperties": {
