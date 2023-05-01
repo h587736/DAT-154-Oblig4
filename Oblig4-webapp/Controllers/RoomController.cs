@@ -20,7 +20,7 @@ namespace Oblig4_webapp.Controllers
         [HttpGet]
         public IActionResult GetRooms()
         {
-            var rooms = _context.Rooms.ToList();
+            var rooms = _context.Room.ToList();
             return Ok(rooms);
         }
 
@@ -28,7 +28,7 @@ namespace Oblig4_webapp.Controllers
         [HttpGet("{id}")]
         public IActionResult GetRoom(int id)
         {
-            var room = _context.Rooms.FirstOrDefault(r => r.Id == id);
+            var room = _context.Room.FirstOrDefault(r => r.Id == id);
 
             if (room == null)
             {
@@ -47,7 +47,7 @@ namespace Oblig4_webapp.Controllers
                 return BadRequest();
             }
 
-            _context.Rooms.Add(room);
+            _context.Room.Add(room);
             _context.SaveChanges();
 
             return CreatedAtAction(nameof(GetRoom), new { id = room.Id }, room);
@@ -57,7 +57,7 @@ namespace Oblig4_webapp.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateRoom(int id, [FromBody] Rooms updatedRoom)
         {
-            var room = _context.Rooms.FirstOrDefault(r => r.Id == id);
+            var room = _context.Room.FirstOrDefault(r => r.Id == id);
 
             if (room == null)
             {
@@ -77,14 +77,14 @@ namespace Oblig4_webapp.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteRoom(int id)
         {
-            var room = _context.Rooms.FirstOrDefault(r => r.Id == id);
+            var room = _context.Room.FirstOrDefault(r => r.Id == id);
 
             if (room == null)
             {
                 return NotFound();
             }
 
-            _context.Rooms.Remove(room);
+            _context.Room.Remove(room);
             _context.SaveChanges();
 
             return NoContent();

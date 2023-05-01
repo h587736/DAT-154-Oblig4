@@ -23,6 +23,7 @@ namespace Oblig4_webapp
 
             services.AddDbContext<HotelDbContext>(options =>
                 options.UseNpgsql(_configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<HotelDbContext>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

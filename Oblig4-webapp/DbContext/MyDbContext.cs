@@ -7,7 +7,7 @@ namespace Oblig4_webapp.MyDbContext
     public class HotelDbContext : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Rooms> Rooms { get; set; }
+        public DbSet<Rooms> Room { get; set; }
         public DbSet<Booking> Bookings { get; set; }
 
         public HotelDbContext(DbContextOptions<HotelDbContext> options) : base(options)
