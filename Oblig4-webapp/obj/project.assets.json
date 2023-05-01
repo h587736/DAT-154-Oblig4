@@ -390,7 +390,6 @@
       },
       "Library/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Library.dll": {}
         },
@@ -993,8 +992,8 @@
     },
     "Library/1.0.0": {
       "type": "project",
-      "path": "../ClassLibrary1/Library.vbproj",
-      "msbuildProject": "../ClassLibrary1/Library.vbproj"
+      "path": "../Library/Library.vbproj",
+      "msbuildProject": "../Library/Library.vbproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1037,8 +1036,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\fredn\\source\\repos\\DAT-154-Oblig4\\ClassLibrary1\\Library.vbproj": {
-              "projectPath": "C:\\Users\\fredn\\source\\repos\\DAT-154-Oblig4\\ClassLibrary1\\Library.vbproj"
+            "C:\\Users\\fredn\\source\\repos\\DAT-154-Oblig4\\Library\\Library.vbproj": {
+              "projectPath": "C:\\Users\\fredn\\source\\repos\\DAT-154-Oblig4\\Library\\Library.vbproj"
             }
           }
         }
