@@ -1,0 +1,48 @@
+﻿@page
+@model Oblig4_webapp.Pages.Pages_Home
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Welcome to the Room Reservation System</h1>
+
+@if (Model.Rooms.Any())
+{
+    <h2>Available Rooms</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Room Number</th>
+                <th>Room Type</th>
+                <th>Number of Beds</th>
+                <th>Price per Night</th>
+                <th>Available From</th>
+                <th>Available To</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var room in Model.Rooms)
+            {
+                <tr>
+                    <td>@room.RoomNumber</td>
+                    <td>@room.RoomType</td>
+                    <td>@room.NumBeds</td>
+                    <td>@room.Price</td>
+                    <td>@room.AvailableFrom</td>
+                    <td>@room.AvailableTo</td>
+                    <td>
+                        <form method="post" asp-page-handler="Book" asp-route-roomid="@room.Id">
+                            <button type="submit">Book</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No available rooms at this time. Please check back later.</p>
+}
