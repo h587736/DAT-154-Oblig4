@@ -21,13 +21,14 @@ namespace Oblig4_webapp
         public void ConfigureServices(IServiceCollection services)
         {
             // Use the connection string from the appsettings.json file
-            var connectionString = _configuration.GetConnectionString("MyConnectionString");
+            var connectionString = _configuration.GetConnectionString("Server=tcp:fredoblig4.database.windows.net,1433;Initial Catalog=dat154DB;Persist Security Info=False;User ID=badfred;Password=password;");
 
             // Register the DbContext with the connection string
             services.AddDbContext<HotelDbContext>(options =>
-                options.UseNpgsql(connectionString));
+        options.UseSqlServer(connectionString));
 
             services.AddControllersWithViews();
+            services.AddScoped<HotelDbContext>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
