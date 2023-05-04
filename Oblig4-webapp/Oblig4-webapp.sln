@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oblig4-webapp", "Oblig4-webapp.csproj", "{4AAD7DF0-DEBA-4244-B730-181A2B9B0F09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library3", "..\Library3\Library3.csproj", "{CCB4EEAD-D3A4-486C-9F7C-6E6159A67DDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library3", "..\Library3\Library3.csproj", "{CCB4EEAD-D3A4-486C-9F7C-6E6159A67DDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontDeskApp", "..\FrontDeskApp\FrontDeskApp.csproj", "{37D616FD-C92A-4035-8BBA-708A793DAA9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CCB4EEAD-D3A4-486C-9F7C-6E6159A67DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCB4EEAD-D3A4-486C-9F7C-6E6159A67DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCB4EEAD-D3A4-486C-9F7C-6E6159A67DDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37D616FD-C92A-4035-8BBA-708A793DAA9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37D616FD-C92A-4035-8BBA-708A793DAA9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37D616FD-C92A-4035-8BBA-708A793DAA9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37D616FD-C92A-4035-8BBA-708A793DAA9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,9 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Oblig4_webapp.MyDbContext;
+using Library3.DB_data;
 using Microsoft.Extensions.Configuration;
-using Library;
+using Library3;
 
 
 namespace Oblig4_webapp
@@ -21,11 +21,12 @@ namespace Oblig4_webapp
         public void ConfigureServices(IServiceCollection services)
         {
             // Use the connection string from the appsettings.json file
-            var connectionString = _configuration.GetConnectionString("Server=tcp:fredoblig4.database.windows.net,1433;Initial Catalog=dat154DB;Persist Security Info=False;User ID=badfred;Password=password;");
+            var connectionStrings = new ConnectionStrings();
+            _configuration.GetSection("ConnectionStrings").Bind(connectionStrings);
 
             // Register the DbContext with the connection string
             services.AddDbContext<HotelDbContext>(options =>
-        options.UseSqlServer(connectionString));
+        options.UseSqlServer(connectionStrings.HotelDbConnection));
 
             services.AddControllersWithViews();
             services.AddScoped<HotelDbContext>();

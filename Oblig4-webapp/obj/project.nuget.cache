@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "gMd/Oj4I/rlfSpcDIiXcIybCvlBkMccv6TIRLXj8DHMD6KN3Zo0Ke2Hhu5KKg2gPsiw4fGeHyUVNKpSd3RfPmw==",
+  "dgSpecHash": "PgEppl04A27WSTrquQglBPgaeiFeV0IoLNvuyqh8y6wVEdxHE6xevGatVcKHEZnJUfj8ylq7ZK3vE4bvWdTB3A==",
   "success": true,
   "projectFilePath": "C:\\Users\\fredn\\source\\repos\\DAT-154-Oblig4\\Oblig4-webapp\\Oblig4-webapp.csproj",
   "expectedPackageFiles": [
@@ -19,6 +19,7 @@
     "C:\\Users\\fredn\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.5\\microsoft.entityframeworkcore.sqlserver.7.0.5.nupkg.sha512",
     "C:\\Users\\fredn\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\fredn\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
+    "C:\\Users\\fredn\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\fredn\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\fredn\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\fredn\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",

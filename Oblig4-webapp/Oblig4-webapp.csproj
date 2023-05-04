@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Library3\Library3.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DbContext\" />
+  </ItemGroup>
+
 </Project>

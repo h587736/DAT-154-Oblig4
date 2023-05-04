@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Library.Models;
-using Oblig4_webapp.MyDbContext;
+using Library3.Models;
+using Library3.DB_data;
 using System;
 using System.Linq;
 

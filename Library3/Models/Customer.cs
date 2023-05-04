@@ -1,4 +1,4 @@
-﻿namespace Library.Models
+﻿namespace Library3.Models
 {
     public partial class Customer
     {

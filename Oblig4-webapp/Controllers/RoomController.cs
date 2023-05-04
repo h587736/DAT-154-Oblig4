@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Library.Models;
-using Oblig4_webapp.MyDbContext;
+using Library3.Models;
+using Library3.DB_data;
 
 namespace Oblig4_webapp.Controllers
 {
@@ -20,7 +20,7 @@ namespace Oblig4_webapp.Controllers
         [HttpGet]
         public IActionResult GetRooms()
         {
-            var rooms = _context.Room.ToList();
+            var rooms = _context.Rooms.ToList();
             return Ok(rooms);
         }
 
@@ -28,7 +28,7 @@ namespace Oblig4_webapp.Controllers
         [HttpGet("{id}")]
         public IActionResult GetRoom(int id)
         {
-            var room = _context.Room.FirstOrDefault(r => r.Id == id);
+            var room = _context.Rooms.FirstOrDefault(r => r.Id == id);
 
             if (room == null)
             {
@@ -40,14 +40,14 @@ namespace Oblig4_webapp.Controllers
 
         // POST: api/room
         [HttpPost]
-        public IActionResult CreateRoom([FromBody] Rooms room)
+        public IActionResult CreateRoom([FromBody] Room room)
         {
             if (room == null)
             {
                 return BadRequest();
             }
 
-            _context.Room.Add(room);
+            _context.Rooms.Add(room);
             _context.SaveChanges();
 
             return CreatedAtAction(nameof(GetRoom), new { id = room.Id }, room);
@@ -55,9 +55,9 @@ namespace Oblig4_webapp.Controllers
 
         // PUT: api/room/5
         [HttpPut("{id}")]
-        public IActionResult UpdateRoom(int id, [FromBody] Rooms updatedRoom)
+        public IActionResult UpdateRoom(int id, [FromBody] Room updatedRoom)
         {
-            var room = _context.Room.FirstOrDefault(r => r.Id == id);
+            var room = _context.Rooms.FirstOrDefault(r => r.Id == id);
 
             if (room == null)
             {
@@ -77,14 +77,14 @@ namespace Oblig4_webapp.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteRoom(int id)
         {
-            var room = _context.Room.FirstOrDefault(r => r.Id == id);
+            var room = _context.Rooms.FirstOrDefault(r => r.Id == id);
 
             if (room == null)
             {
                 return NotFound();
             }
 
-            _context.Room.Remove(room);
+            _context.Rooms.Remove(room);
             _context.SaveChanges();
 
             return NoContent();

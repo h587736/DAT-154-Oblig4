@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Library.Models;
-using Oblig4_webapp.MyDbContext;
+using Library3.Models;
+using Library3.DB_data;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace Oblig4_webapp.Pages
@@ -16,12 +17,12 @@ namespace Oblig4_webapp.Pages
             _serviceProvider = serviceProvider;
         }
 
-        public IList<Rooms> Rooms { get; set; }
+        public IList<Room> Rooms { get; set; }
 
         public void OnGet()
         {
-            using var context = _serviceProvider.GetRequiredService<Oblig4_webapp.MyDbContext.HotelDbContext>();
-            Rooms = context.Room.ToList();
+            using var context = _serviceProvider.GetRequiredService<Library3.DB_data.HotelDbContext>();
+            Rooms = context.Rooms.ToList();
         }
     }
 

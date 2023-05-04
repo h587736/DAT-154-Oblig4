@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Library.Models
+namespace Library3.Models
 {
     public partial class Booking
     {
@@ -7,7 +7,7 @@ namespace Library.Models
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
         public int RoomId { get; set; }
-        public Rooms Room { get; set; }
+        public Room Room { get; set; }
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
     }
