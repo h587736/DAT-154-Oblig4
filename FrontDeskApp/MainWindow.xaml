@@ -67,19 +67,18 @@
                 <StackPanel Margin="10">
                     <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                         <TextBlock Text="Customer Last Name:" Width="125" VerticalAlignment="Center"/>
-                        <TextBox x:Name="customerIdTextBox" Width="200"/>
+                        <TextBox x:Name="customerLastNameTextBox" Width="200"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                         <TextBlock Text="Old room number:" Width="125" VerticalAlignment="Center"/>
-                        <TextBox x:Name="roomIdTextBox" Width="200"/>
+                        <TextBox x:Name="oldRoomNumberTextBox" Width="200"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                         <TextBlock Text="New room number:" Width="125" VerticalAlignment="Center"/>
-                        <TextBox x:Name="gradeTextBox" Width="200"/>
+                        <TextBox x:Name="newRoomNumberTextBox" Width="200"/>
                     </StackPanel>
-                    <Button x:Name="addStudentButton" Content="Change room booking" Click="changeRoom_Click" Width="150" HorizontalAlignment="Left" Margin="10 5 0 0"/>
-                    <Button x:Name="removeStudentButton" Content="Remove booking" Click="removeBooking_Click" Width="150" HorizontalAlignment="Left" Margin="10 5 0 0"/>
-                    <TextBlock x:Name="participantResultTextBlock" Margin="0 10 0 0"/>
+                    <Button x:Name="changeRoomButton" Content="Change room booking" Click="changeRoomButton_Click" Width="150" HorizontalAlignment="Left" Margin="10 5 0 0"/>
+                    <TextBlock x:Name="roomChangeResult" Margin="0 10 0 0"/>
                 </StackPanel>
             </TabItem>
 

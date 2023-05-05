@@ -118,6 +118,41 @@ namespace FrontDeskApp
             }
         }
 
+        //Class for adding students to a course
+        private void changeRoomButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (var context = new HotelDbContext())
+            {
+                var customerLastName = customerLastNameTextBox.Text;
+                var oldRoomNumber = int.Parse(oldRoomNumberTextBox.Text);
+                var newRoomNumber = int.Parse(newRoomNumberTextBox.Text);
+
+                var oldRoom = context.Rooms.SingleOrDefault(r => r.RoomNumber == oldRoomNumber);
+                if (oldRoom == null)
+                {
+                    // Room not found
+                    return;
+                }
+
+                var newRoom = context.Rooms.SingleOrDefault(r => r.RoomNumber == newRoomNumber);
+                if (newRoom == null)
+                {
+                    // Room not found
+                    return;
+                }
+
+                var booking = context.Bookings.Include(b => b.Customer).SingleOrDefault(b => b.RoomId == oldRoom.Id && b.Customer.LastName == customerLastName);
+                if (booking == null)
+                {
+                    // Booking not found
+                    return;
+                }
+
+                booking.Room = newRoom;
+                context.SaveChanges();
+            }
+
+        }
             private void allRooms()
         {
             var filteredList = (from r in Rooms
