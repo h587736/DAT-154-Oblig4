@@ -18,7 +18,6 @@ using Library3.DB_data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Options;
-using Library3;
 using System.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
@@ -35,7 +34,7 @@ namespace FrontDeskApp
         private readonly LocalView<Room> Rooms;
         private readonly LocalView<Booking> Bookings;
         private readonly LocalView<Customer> Customers;
-
+        private readonly LocalView<Service> Services;
         public MainWindow()
         {
             InitializeComponent();
@@ -43,10 +42,12 @@ namespace FrontDeskApp
             Rooms = dx.Rooms.Local;
             Bookings = dx.Bookings.Local;
             Customers = dx.Customers.Local;
+            Services = dx.Services.Local;
 
             dx.Rooms.Load();
             dx.Bookings.Load();
             dx.Customers.Load();
+            dx.Services.Load();
 
             DateTime checkInDate = DateTime.Now;
             DateTime checkOutDate = DateTime.Now.AddDays(1);
@@ -54,10 +55,14 @@ namespace FrontDeskApp
             // Populates the lists with all the relevant entries
             allRooms();
             allBookings();
+            allServices();
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
+            dx.Rooms.Load();
+            dx.Bookings.Load();
+            dx.Customers.Load();
             string searchText = searchBox.Text.Trim().ToLower();
             if (string.IsNullOrEmpty(searchText))
             {
@@ -93,6 +98,9 @@ namespace FrontDeskApp
 
         private void SearchBooking_Click(object sender, RoutedEventArgs e)
         {
+            dx.Rooms.Load();
+            dx.Bookings.Load();
+            dx.Customers.Load();
             string BookingSearchText = bookingSearch.Text.Trim().ToLower();
             if (string.IsNullOrEmpty(BookingSearchText))
             {
@@ -123,9 +131,9 @@ namespace FrontDeskApp
         {
             using (var context = new HotelDbContext())
             {
-                var customerLastName = customerLastNameTextBox.Text;
-                var oldRoomNumber = int.Parse(oldRoomNumberTextBox.Text);
-                var newRoomNumber = int.Parse(newRoomNumberTextBox.Text);
+                var customerLastName = deleteCustomerLastNameTextBox.Text;
+                var oldRoomNumber = int.Parse(deleteRoomNumberTextBox.Text);
+                var newRoomNumber = int.Parse(deleteCheckInDatePicker.Text);
 
                 var oldRoom = context.Rooms.SingleOrDefault(r => r.RoomNumber == oldRoomNumber);
                 if (oldRoom == null)
@@ -150,11 +158,238 @@ namespace FrontDeskApp
 
                 booking.Room = newRoom;
                 context.SaveChanges();
+
+                roomChangeResult.Text = "Room Changed Sucessfully";
             }
 
         }
-            private void allRooms()
+
+        private void addReservationButton_Click(object sender, RoutedEventArgs e)
         {
+            using (var context = new HotelDbContext())
+            {
+                var customerFirstName = customerFirstNameTextBox.Text;
+                var customerLastName = customerLastNameTextBoxBooking.Text;
+                var customerEmail = customerEmailTextBox.Text;
+
+                var checkinDate = (DateTime)checkInDatePicker.SelectedDate;
+                var checkoutDate = (DateTime)checkOutDatePicker.SelectedDate;
+
+                var roomNumber = int.Parse(roomNumberTextBox.Text);
+                var customerId = 0;
+
+                // Check if a customer with the same first name, last name, and email already exists in the database
+                var existingCustomer = context.Customers.FirstOrDefault(c => c.FirstName == customerFirstName &&
+                                                                             c.LastName == customerLastName &&
+                                                                             c.Email == customerEmail);
+                if (existingCustomer != null)
+                {
+                    customerId = existingCustomer.Id;
+                }
+                else
+                {
+                    // Create a new customer entity if one does not exist
+                    var newCustomer = new Customer
+                    {
+                        FirstName = customerFirstName,
+                        LastName = customerLastName,
+                        Email = customerEmail
+                    };
+                    context.Customers.Add(newCustomer);
+                    context.SaveChanges();
+
+                    customerId = newCustomer.Id;
+                }
+
+                // Find the room entity by its RoomNumber property
+                var room = context.Rooms.FirstOrDefault(r => r.RoomNumber == roomNumber);
+                if (room == null)
+                {
+                    // Room not found
+                    addReservationResult.Text = "Room not found.";
+                    return;
+                }
+
+                // Create a new booking entity with the given room, customer, and checkin/checkout dates
+                var newBooking = new Booking
+                {
+                    RoomId = room.Id, // Set RoomId to the Id of the room entity
+                    CustomerId = customerId,
+                    CheckInDate = checkinDate,
+                    CheckOutDate = checkoutDate
+                };
+                context.Bookings.Add(newBooking);
+
+                // Set the Booked status of the room to true
+                room.Booked = true;
+
+                context.SaveChanges();
+
+                // Display success message
+                addReservationResult.Text = "Reservation added successfully!";
+            }
+        }
+
+
+        private void deleteReservationButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (var context = new HotelDbContext())
+            {
+                var customerLastName = deleteCustomerLastNameTextBox.Text;
+                var roomNumber = int.Parse(deleteRoomNumberTextBox.Text);
+                var checkinDate = deleteCheckInDatePicker.SelectedDate;
+
+                // Find booking based on customer last name, room number, and check-in date
+                var booking = context.Bookings
+                    .Include(b => b.Customer)
+                    .Include(b => b.Room)
+                    .SingleOrDefault(b =>
+                        b.Customer.LastName == customerLastName &&
+                        b.Room.RoomNumber == roomNumber &&
+                        b.CheckInDate == checkinDate);
+
+                if (booking == null)
+                {
+                    // Booking not found
+                    deleteReservationResult.Text = "Booking not found.";
+                    return;
+                }
+
+                // Get the room associated with the booking and set its Booked status to false
+                var room = booking.Room;
+                room.Booked = false;
+
+                // Remove booking from context and save changes
+                context.Bookings.Remove(booking);
+                context.SaveChanges();
+
+                // Update UI
+                deleteReservationResult.Text = "Booking deleted successfully.";
+            }
+        }
+
+        private void CheckinButton_Click(object sender, RoutedEventArgs e)
+{
+    using (var context = new HotelDbContext())
+    {
+        var customerLastName = checkinoutCustomerLastNameTextBox.Text;
+
+        // Find the customer entity with the given last name
+        var customer = context.Customers.FirstOrDefault(c => c.LastName == customerLastName);
+        if (customer == null)
+        {
+            checkinoutStatusTextBlock.Text = "Customer not found.";
+            return;
+        }
+
+        // Find the booking entity for the given customer that has not been checked in
+        var booking = context.Bookings.FirstOrDefault(b => b.CustomerId == customer.Id);
+        if (booking == null)
+        {
+            checkinoutStatusTextBlock.Text = "No booking found for customer.";
+            return;
+        }
+
+        // Update the booking entity with the current time for check-in
+        booking.CheckInDate = DateTime.Now;
+
+        // Update the booked status of the associated room
+        var room = context.Rooms.FirstOrDefault(r => r.Id == booking.RoomId);
+        if (room != null)
+        {
+            room.Booked = true;
+        }
+
+        context.SaveChanges();
+
+        checkinoutStatusTextBlock.Text = "Checked in successfully!";
+    }
+}
+
+        private void CheckoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (var context = new HotelDbContext())
+            {
+                var customerLastName = checkinoutCustomerLastNameTextBox.Text;
+
+                // Find the customer entity with the given last name
+                var customer = context.Customers.FirstOrDefault(c => c.LastName == customerLastName);
+                if (customer == null)
+                {
+                    checkinoutStatusTextBlock.Text = "Customer not found.";
+                    return;
+                }
+
+                // Find the booking entity for the given customer that has not been checked out
+                var booking = context.Bookings.FirstOrDefault(b => b.CustomerId == customer.Id);
+                if (booking == null)
+                {
+                    checkinoutStatusTextBlock.Text = "No active booking found for customer.";
+                    return;
+                }
+
+                // Update the booking entity with the current time for check-out
+                booking.CheckOutDate = DateTime.Now;
+
+                // Update the booked status of the associated room
+                var room = context.Rooms.FirstOrDefault(r => r.Id == booking.RoomId);
+                if (room != null)
+                {
+                    room.Booked = false;
+                }
+
+                context.SaveChanges();
+
+                checkinoutStatusTextBlock.Text = "Checked out successfully!";
+            }
+        }
+
+        private void AddServiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (var context = new HotelDbContext())
+            {
+                // Parse input values
+                if (!int.TryParse(serviceRoomNumberTextBox.Text, out int roomNumber))
+                {
+                    serviceFeedbackTextBlock.Text = "Invalid room number.";
+                    return;
+                }
+                string serviceType = serviceTypeTextBox.Text.Trim();
+                string description = serviceDescriptionTextBox.Text.Trim();
+
+                // Find the room entity with the given room number
+                var room = context.Rooms.FirstOrDefault(r => r.RoomNumber == roomNumber);
+                if (room == null)
+                {
+                    serviceFeedbackTextBlock.Text = "Room not found.";
+                    return;
+                }
+
+                // Create a new service request entity and set its properties
+                var serviceRequest = new Service
+                {
+                    RoomId = room.Id,
+                    RequestType = serviceType,
+                    DateRequested = DateTime.Now,
+                    Description = description
+                };
+
+                // Add the new service request to the database
+                context.Services.Add(serviceRequest);
+                context.SaveChanges();
+
+                // Update the data grid to show the new service request
+                serviceRequestsDataGrid.ItemsSource = context.Services.ToList();
+
+                serviceFeedbackTextBlock.Text = "Service request added successfully!";
+            }
+        }
+
+        private void allRooms()
+        {
+            dx.Rooms.Load();
+            dx.Bookings.Load();
+            dx.Customers.Load();
             var filteredList = (from r in Rooms
                                 join b in Bookings on r.Id equals b.RoomId into roomBookings
                                 from rb in roomBookings.DefaultIfEmpty()
@@ -179,6 +414,9 @@ namespace FrontDeskApp
 
         private void allBookings()
         {
+            dx.Rooms.Load();
+            dx.Bookings.Load();
+            dx.Customers.Load();
             var filteredList = (from b in Bookings
                                 join c in Customers on b.CustomerId equals c.Id
                                 select new
@@ -194,5 +432,25 @@ namespace FrontDeskApp
             bookingList.ItemsSource = filteredList;
 
         }
+
+
+private void allServices()
+            {
+                dx.Rooms.Load();
+                dx.Services.Load();
+                var filteredList = (from s in dx.Services
+                                    join r in dx.Rooms on s.RoomId equals r.Id
+                                    select new
+                                    {
+                                        RoomNumber = r.RoomNumber,
+                                        ServiceType = s.RequestType,
+                                        DateRequested = s.DateRequested,
+                                        Description = s.Description,
+                                        DateCompleted = s.DateCompleted
+                                    }).ToList();
+
+            serviceRequestsDataGrid.ItemsSource = filteredList;
+            }
+
     }
 }

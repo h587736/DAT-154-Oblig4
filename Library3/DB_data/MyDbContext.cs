@@ -16,7 +16,8 @@ namespace Library3.DB_data
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<Booking> Bookings { get; set; }
-        
+        public virtual DbSet<Service> Services { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -30,7 +31,6 @@ namespace Library3.DB_data
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Email).IsRequired().HasMaxLength(50);
-                entity.Property(e => e.Password).IsRequired().HasMaxLength(50);
                 entity.Property(e => e.FirstName).IsRequired().HasMaxLength(50);
                 entity.Property(e => e.LastName).IsRequired().HasMaxLength(50);
             });
@@ -44,46 +44,6 @@ namespace Library3.DB_data
                 entity.Property(e => e.Price).IsRequired().HasColumnType("decimal(18,2)");
                 entity.Property(e => e.AvailableFrom).IsRequired();
                 entity.Property(e => e.AvailableTo).IsRequired();
-            });
-
-            modelBuilder.Entity<Customer>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-
-                entity.Property(e => e.Email)
-                    .IsRequired();
-
-                entity.Property(e => e.Password)
-                    .IsRequired();
-
-                entity.Property(e => e.FirstName)
-                    .IsRequired();
-
-                entity.Property(e => e.LastName)
-                    .IsRequired();
-            });
-
-            modelBuilder.Entity<Room>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-
-                entity.Property(e => e.RoomNumber)
-                    .IsRequired();
-
-                entity.Property(e => e.RoomType)
-                    .IsRequired();
-
-                entity.Property(e => e.NumBeds)
-                    .IsRequired();
-
-                entity.Property(e => e.Price)
-                    .IsRequired();
-
-                entity.Property(e => e.AvailableFrom)
-                    .IsRequired();
-
-                entity.Property(e => e.AvailableTo)
-                    .IsRequired();
             });
 
             modelBuilder.Entity<Booking>(entity =>
@@ -106,8 +66,31 @@ namespace Library3.DB_data
                 entity.Property(e => e.CheckOutDate)
                     .IsRequired();
             });
-            OnModelCreatingPartial(modelBuilder);
+
+            modelBuilder.Entity<Service>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+
+                entity.HasOne(e => e.Room)
+                    .WithMany(r => r.Services)
+                    .HasForeignKey(e => e.RoomId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.Property(e => e.RequestType)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.DateRequested)
+                    .IsRequired();
+
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.DateCompleted);
+            });
+
+            base.OnModelCreating(modelBuilder);
         }
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

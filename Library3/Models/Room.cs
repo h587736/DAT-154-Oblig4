@@ -33,5 +33,7 @@ namespace Library3.Models
 
         [Required]
         public bool Booked { get; set; }
+
+        public ICollection<Service> Services { get; set; }
     }
 }

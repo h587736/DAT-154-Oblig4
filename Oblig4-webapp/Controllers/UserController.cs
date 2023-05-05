@@ -29,7 +29,6 @@ namespace Oblig4_webapp.Controllers
             var customer = new Customer
             {
                 Email = request.Email,
-                Password = request.Password,
                 FirstName = request.FirstName,
                 LastName = request.LastName
             };
@@ -40,19 +39,5 @@ namespace Oblig4_webapp.Controllers
             return Ok("Registration successful.");
         }
 
-        [HttpPost("login")]
-        public IActionResult Login(LoginRequest request)
-        {
-            var customer = _context.Customers.FirstOrDefault(c => c.Email == request.Email && c.Password == request.Password);
-
-            if (customer == null)
-            {
-                return Unauthorized("Invalid email or password.");
-            }
-
-            // Create token here and return it to client
-
-            return Ok("Login successful.");
-        }
     }
 }
